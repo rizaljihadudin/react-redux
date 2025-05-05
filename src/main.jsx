@@ -5,11 +5,15 @@ import App from './App.jsx'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import { configureStore } from '@reduxjs/toolkit'
+import { counterSlice } from './counterSlice.js'
+import Counter from './Counter.jsx'
 
 
 // Store tempat penyimpanan global untuk state aplikasi dalam arsitektur Redux, wajib menambahkan reducers
 const store = configureStore({
-  reducer: {}
+  reducer: {
+    counter: counterSlice.reducer
+  }
 });
 
 createRoot(document.getElementById('root')).render(
@@ -18,6 +22,7 @@ createRoot(document.getElementById('root')).render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />
+          <Route path='/counter' element={<Counter/>} />
         </Routes>
       </BrowserRouter>
     </Provider>
