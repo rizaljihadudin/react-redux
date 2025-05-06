@@ -1,10 +1,11 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { decrement, increment } from "./counterSlice";
+import { decrement, getDoubleCounter, increment } from "./counterSlice";
 
 export default function Counter(){
     const counter = useSelector(state => state.counter);
     const dispatch = useDispatch();
+    const doubleCounter = useSelector(getDoubleCounter);
 
     function handleIncrement(){
         dispatch(increment());
@@ -17,6 +18,7 @@ export default function Counter(){
     return(
         <>
             <h1>Counter : {counter}</h1>
+            <h1>Double Counter : {doubleCounter}</h1>
             <button onClick={handleIncrement}>Increment</button>
             <button onClick={() => dispatch(increment(2))}>Increment + 2</button>
             &nbsp;
