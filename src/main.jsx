@@ -7,12 +7,17 @@ import { BrowserRouter, Route, Routes } from 'react-router'
 import { configureStore } from '@reduxjs/toolkit'
 import { counterSlice } from './counterSlice.js'
 import Counter from './Counter.jsx'
+import { todoListSlice } from './todoListSlice.js'
+import ListTodo from './ListTodo.jsx'
+import AddTodo from './AddTodo.jsx'
+import UpdateTodo from './UpdateTodo.jsx'
 
 
 // Store tempat penyimpanan global untuk state aplikasi dalam arsitektur Redux, wajib menambahkan reducers
 const store = configureStore({
   reducer: {
-    counter: counterSlice.reducer
+    counter: counterSlice.reducer,
+    todoList : todoListSlice.reducer
   }
 });
 
@@ -28,6 +33,12 @@ createRoot(document.getElementById('root')).render(
               <Counter />
             </>
           } />
+          <Route path='/todolist'>
+            <Route index element={<ListTodo />}/>
+            <Route path="add" element={<AddTodo />}/>
+            <Route path=":id/edit" element={<UpdateTodo />}/>
+
+          </Route>
         </Routes>
       </BrowserRouter>
     </Provider>
