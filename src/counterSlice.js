@@ -23,9 +23,12 @@ export const counterSlice = createSlice({
     selectors:{
         getDoubleCounter: (state) => {
             return state * 2;
+        },
+        getCounter: (state, value) => {
+            return state * value;
         }
     } 
 });
 
 export const {increment, decrement} = counterSlice.actions;
-export const {getDoubleCounter} = counterSlice.selectors;
+export const {getDoubleCounter, getCounter} = counterSlice.selectors;
